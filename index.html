@@ -86,7 +86,8 @@
         <span class="pill">Mechatronics student</span>
         <span class="pill">3D Design</span>
         <span class="pill">PCB & Microcontrollers</span>
-        <span class="pill">Flutter beginner</span>
+        <span class="pill">3D printing services</span>
+        <span class="pill">3D business cards</span>
       </div>
     </div>
 
@@ -97,7 +98,7 @@
         <div class="card-inner">
           <div>
             <div class="brand">
-              <div class="logo">di</div>
+              <div class="logo">D</div>
               <div class="title">
                 <div class="name">dipico</div>
                 <div class="role">Mechatronics student • 3D Designer</div>
@@ -120,7 +121,7 @@
           <div class="contacts">
             <div class="socials" role="list" aria-label="Social links">
               <!-- Telegram -->
-              <a class="icon-btn" id="tg" href="https://t.me/yourusername" target="_blank" rel="noopener noreferrer">
+              <a class="icon-btn" id="tg" href="https://t.me/dipicooo" target="_blank" rel="noopener noreferrer">
                 <svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg" aria-hidden>
                   <circle cx="120" cy="120" r="120" fill="rgba(255,255,255,0.03)" />
                   <path d="M46 121c0 0 24-10 35-14 9-3 111-50 117-53 6-2 10 0 9 5-2 6-24 69-28 80-3 9-6 14-13 14-6 0-22-8-30-12-20-9-41-18-58-24-14-5-32-6-32-6z" fill="currentColor"/>
@@ -129,19 +130,13 @@
               </a>
 
               <!-- Phone -->
-              <a class="icon-btn" id="phone" href="tel:+0000000000">
+              <a class="icon-btn" id="phone" href="tel:+09056025848">
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
                   <path fill="currentColor" d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1C10.07 21 3 13.93 3 5a1 1 0 011-1h3.5a1 1 0 011 1c0 1.24.2 2.45.57 3.57a1 1 0 01-.24 1.01l-2.2 2.2z"/>
                 </svg>
-                +00 000 000 000
+                0905 602 5848
               </a>
 
-
-
-
-            <div class="footer">
-              <button class="download" id="dl">Download Resume</button>
-            </div>
           </div>
         </div>
         <div class="shine" aria-hidden></div>
@@ -169,13 +164,7 @@
     card.addEventListener('mouseleave', reset);
     card.addEventListener('touchend', reset);
 
-    // Download a simple resume (vCard-style txt)
-    document.getElementById('dl').addEventListener('click', ()=>{
-      const txt = `Name: dipico\nRole: Mechatronics student; 3D Designer\nEmail: your.email@example.com\nPhone: +00 000 000 000\nTelegram: https://t.me/yourusername\nLinkedIn: https://www.linkedin.com/in/yourprofile\nGitHub: https://github.com/yourusername\n\nAbout:\nI'm a Mechatronics student who builds hardware projects, designs 3D models, and is learning app development.`;
-      const blob = new Blob([txt], {type: 'text/plain'});
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a'); a.href = url; a.download = 'dipico_resume.txt'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
-    });
+
 
     // Accessibility: allow keyboard focus to icons
     document.querySelectorAll('.icon-btn').forEach(el=>{ el.setAttribute('tabindex','0'); });
