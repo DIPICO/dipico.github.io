@@ -1,24 +1,201 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>My Resume</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>dipico — Digital Business Card</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg1: #0f172a;
+      --bg2: #07133a;
+      --accent: #6EE7B7;
+      --muted: rgba(255,255,255,0.65);
+      --card-w: 360px;
+      --card-h: 520px;
+      --glass: rgba(255,255,255,0.04);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial}
+    body{
+      display:flex;align-items:center;justify-content:center;
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(110,231,183,0.06), transparent),
+                  linear-gradient(180deg,var(--bg1),var(--bg2));
+      color:#fff;padding:32px;
+    }
+
+    /* Container for centering and responsive scaling */
+    .wrap{width:100%;max-width:1100px;display:grid;grid-template-columns:1fr 420px;gap:40px;align-items:center}
+    @media (max-width:880px){.wrap{grid-template-columns:1fr;gap:18px;padding:12px}}
+
+    /* Left - a minimal intro / background */
+    .intro{padding:28px}
+    .intro h1{font-size:40px;margin:0 0 8px;letter-spacing:0.5px}
+    .intro p{color:var(--muted);line-height:1.5;margin:0 0 18px}
+
+    /* Right - the card */
+    .card-scene{display:flex;align-items:center;justify-content:center}
+    .card{width:var(--card-w);height:var(--card-h);border-radius:22px;background:linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01));backdrop-filter: blur(8px);box-shadow:0 10px 40px rgba(2,6,23,0.7);position:relative;overflow:hidden;transform-style:preserve-3d;transition:transform 300ms cubic-bezier(.2,.9,.3,1)}
+
+    /* Decorative 3D shapes */
+    .orb{position:absolute;border-radius:50%;filter:blur(38px);opacity:0.65}
+    .orb.one{width:260px;height:260px;right:-60px;top:-50px;background:linear-gradient(180deg,#6EE7B7,#60A5FA)}
+    .orb.two{width:160px;height:160px;left:-50px;bottom:-40px;background:linear-gradient(180deg,#A78BFA,#F472B6);opacity:0.4}
+
+    /* Inner content with a subtle 3D offset */
+    .card-inner{position:relative;width:100%;height:100%;padding:22px;display:flex;flex-direction:column;justify-content:space-between;transform:translateZ(30px)}
+
+    .brand{display:flex;align-items:center;gap:14px}
+    .logo{width:68px;height:68px;border-radius:12px;background:linear-gradient(135deg,#111827,rgba(255,255,255,0.02));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px;letter-spacing:1px;color:var(--accent);box-shadow:0 6px 18px rgba(2,6,23,0.6)}
+    .title{line-height:1}
+    .title .name{font-size:20px;font-weight:700}
+    .title .role{color:var(--muted);font-size:13px;margin-top:4px}
+
+    .portrait{height:150px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));display:flex;align-items:center;justify-content:center;font-weight:600}
+
+    .skills{display:flex;gap:10px;flex-wrap:wrap}
+    .pill{padding:8px 12px;border-radius:999px;background:var(--glass);font-size:13px;color:var(--muted)}
+
+    .contacts{display:flex;flex-direction:column;gap:12px}
+    .socials{display:flex;gap:10px}
+    .icon-btn{display:inline-flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;background:rgba(255,255,255,0.02);text-decoration:none;color:inherit;font-weight:600;border:1px solid rgba(255,255,255,0.03);backdrop-filter: blur(2px)}
+    .icon-btn svg{width:18px;height:18px;display:block}
+
+    .footer{display:flex;align-items:center;justify-content:space-between;gap:10px}
+    .download{padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,var(--accent),#60A5FA);color:#04202b;font-weight:700;border:none;cursor:pointer}
+    .small{font-size:12px;color:var(--muted)}
+
+    /* Responsive tweaks */
+    @media (max-width:880px){
+      :root{--card-w:320px;--card-h:520px}
+      .intro h1{font-size:28px}
+      .card{border-radius:18px}
+    }
+
+    /* Tiny animation */
+    .shine{position:absolute;inset:0;pointer-events:none;background:linear-gradient(120deg,rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.00) 35%, rgba(255,255,255,0.03) 60%, rgba(255,255,255,0.00)100%);mix-blend-mode:overlay}
+
+  </style>
 </head>
 <body>
-  <h1>Your Name</h1>
-  <p>Mechatronics Student | Flutter Developer | AI Enthusiast</p>
+  <div class="wrap">
+    <div class="intro">
+      <h1>dipico</h1>
+      <p>Hi — I'm <strong>dipico</strong>, a Mechatronics student and 3D designer. This digital business card is responsive and uses subtle 3D interaction. Replace the links with your real profiles.</p>
+      <p class="small">Tips: tilt the card with your mouse (or move your finger on mobile) — click icons to open contact links.</p>
+      <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">
+        <span class="pill">Mechatronics student</span>
+        <span class="pill">3D Design</span>
+        <span class="pill">PCB & Microcontrollers</span>
+        <span class="pill">Flutter beginner</span>
+      </div>
+    </div>
 
-  <div class="links">
-    <a href="https://linkedin.com/in/yourid" target="_blank">LinkedIn</a>
-    <a href="https://github.com/yourid" target="_blank">GitHub</a>
-    <a href="https://t.me/yourid" target="_blank">Telegram</a>
-    <a href="https://wa.me/yourphonenumber" target="_blank">WhatsApp</a>
+    <div class="card-scene">
+      <div class="card" id="card" aria-label="dipico business card">
+        <div class="orb one" aria-hidden></div>
+        <div class="orb two" aria-hidden></div>
+        <div class="card-inner">
+          <div>
+            <div class="brand">
+              <div class="logo">di</div>
+              <div class="title">
+                <div class="name">dipico</div>
+                <div class="role">Mechatronics student • 3D Designer</div>
+              </div>
+            </div>
+
+            <div style="margin-top:16px" class="portrait">
+              <div style="text-align:center">
+                <div style="font-size:22px;font-weight:700">3D DESIGN</div>
+                <div style="font-size:12px;color:var(--muted);margin-top:6px">Interactive CSS model • subtle lighting</div>
+              </div>
+            </div>
+
+            <div style="margin-top:14px">
+              <div style="font-size:13px;color:var(--muted);margin-bottom:8px">About</div>
+              <div style="font-size:14px;line-height:1.45;color:rgba(255,255,255,0.9)">I'm studying Mechatronics and enjoy building hardware projects, designing 3D models, and learning app development.</div>
+            </div>
+          </div>
+
+          <div class="contacts">
+            <div class="socials" role="list" aria-label="Social links">
+              <!-- Telegram -->
+              <a class="icon-btn" id="tg" href="https://t.me/yourusername" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+                  <circle cx="120" cy="120" r="120" fill="rgba(255,255,255,0.03)" />
+                  <path d="M46 121c0 0 24-10 35-14 9-3 111-50 117-53 6-2 10 0 9 5-2 6-24 69-28 80-3 9-6 14-13 14-6 0-22-8-30-12-20-9-41-18-58-24-14-5-32-6-32-6z" fill="currentColor"/>
+                </svg>
+                Telegram
+              </a>
+
+              <!-- Phone -->
+              <a class="icon-btn" id="phone" href="tel:+0000000000">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+                  <path fill="currentColor" d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1C10.07 21 3 13.93 3 5a1 1 0 011-1h3.5a1 1 0 011 1c0 1.24.2 2.45.57 3.57a1 1 0 01-.24 1.01l-2.2 2.2z"/>
+                </svg>
+                +00 000 000 000
+              </a>
+
+              <!-- LinkedIn -->
+              <a class="icon-btn" id="li" href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+                  <path fill="currentColor" d="M4.98 3.5C4.98 4.88 3.86 6 2.48 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8h4v12h-4zM8 8h3.8v1.6h.1c.5-.9 1.9-1.9 3.9-1.9 4.2 0 5 2.8 5 6.4V20h-4v-5.4c0-1.3 0-3-1.8-3-1.8 0-2.1 1.4-2.1 2.9V20H8V8z"/>
+                </svg>
+                LinkedIn
+              </a>
+
+              <!-- GitHub -->
+              <a class="icon-btn" id="gh" href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+                  <path fill="currentColor" d="M12 .5C5.6.5.5 5.6.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.5v-2c-3.2.7-3.8-1.5-3.8-1.5-.5-1.2-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1 1.6 1.5 1.6 1.5.9 1.6 2.4 1.1 3 .8.1-.7.4-1.1.7-1.4-2.6-.3-5.4-1.3-5.4-5.7 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.7.1-3.5 0 0 1-.3 3.3 1.2 1-.3 2-.5 3-.5s2 .2 3 .5c2.3-1.6 3.3-1.2 3.3-1.2.6 1.8.2 3.2.1 3.5.8.8 1.2 1.9 1.2 3.2 0 4.4-2.8 5.4-5.4 5.7.4.3.7.9.7 1.8v2.6c0 .3.2.6.8.5 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.6 18.4.5 12 .5z"/>
+                </svg>
+                GitHub
+              </a>
+            </div>
+
+            <div class="footer">
+              <button class="download" id="dl">Download Resume</button>
+              <div class="small">3D style • responsive • English</div>
+            </div>
+          </div>
+        </div>
+        <div class="shine" aria-hidden></div>
+      </div>
+    </div>
   </div>
 
-  <h2>Resume</h2>
-  <a href="assets/resume.pdf" download>Download My CV</a>
+  <script>
+    // 3D tilt interaction
+    const card = document.getElementById('card');
+    const bounds = 20; // max degrees
 
-  <script src="script.js"></script>
+    function handleMove(e){
+      const rect = card.getBoundingClientRect();
+      const x = ( (e.clientX || (e.touches && e.touches[0].clientX)) - rect.left ) / rect.width;
+      const y = ( (e.clientY || (e.touches && e.touches[0].clientY)) - rect.top ) / rect.height;
+      const rx = (y - 0.5) * bounds * -1;
+      const ry = (x - 0.5) * bounds;
+      card.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) scale(1.03)`;
+    }
+    function reset(){ card.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)'; }
+
+    card.addEventListener('mousemove', handleMove);
+    card.addEventListener('touchmove', handleMove, {passive:true});
+    card.addEventListener('mouseleave', reset);
+    card.addEventListener('touchend', reset);
+
+    // Download a simple resume (vCard-style txt)
+    document.getElementById('dl').addEventListener('click', ()=>{
+      const txt = `Name: dipico\nRole: Mechatronics student; 3D Designer\nEmail: your.email@example.com\nPhone: +00 000 000 000\nTelegram: https://t.me/yourusername\nLinkedIn: https://www.linkedin.com/in/yourprofile\nGitHub: https://github.com/yourusername\n\nAbout:\nI'm a Mechatronics student who builds hardware projects, designs 3D models, and is learning app development.`;
+      const blob = new Blob([txt], {type: 'text/plain'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href = url; a.download = 'dipico_resume.txt'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+    });
+
+    // Accessibility: allow keyboard focus to icons
+    document.querySelectorAll('.icon-btn').forEach(el=>{ el.setAttribute('tabindex','0'); });
+
+  </script>
 </body>
 </html>
