@@ -28,21 +28,21 @@
     .wrap{width:100%;max-width:1100px;display:grid;grid-template-columns:1fr 420px;gap:40px;align-items:center}
     @media (max-width:880px){.wrap{grid-template-columns:1fr;gap:18px;padding:12px}}
 
-    /* Left - a minimal intro / background */
+
     .intro{padding:28px}
     .intro h1{font-size:40px;margin:0 0 8px;letter-spacing:0.5px}
     .intro p{color:var(--muted);line-height:1.5;margin:0 0 18px}
 
-    /* Right - the card */
+
     .card-scene{display:flex;align-items:center;justify-content:center}
     .card{width:var(--card-w);height:var(--card-h);border-radius:22px;background:linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01));backdrop-filter: blur(8px);box-shadow:0 10px 40px rgba(2,6,23,0.7);position:relative;overflow:hidden;transform-style:preserve-3d;transition:transform 300ms cubic-bezier(.2,.9,.3,1)}
 
-    /* Decorative 3D shapes */
+ 
     .orb{position:absolute;border-radius:50%;filter:blur(38px);opacity:0.65}
     .orb.one{width:260px;height:260px;right:-60px;top:-50px;background:linear-gradient(180deg,#6EE7B7,#60A5FA)}
     .orb.two{width:160px;height:160px;left:-50px;bottom:-40px;background:linear-gradient(180deg,#A78BFA,#F472B6);opacity:0.4}
 
-    /* Inner content with a subtle 3D offset */
+
     .card-inner{position:relative;width:100%;height:100%;padding:22px;display:flex;flex-direction:column;justify-content:space-between;transform:translateZ(30px)}
 
     .brand{display:flex;align-items:center;gap:14px}
@@ -65,20 +65,18 @@
     .download{padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,var(--accent),#60A5FA);color:#04202b;font-weight:700;border:none;cursor:pointer}
     .small{font-size:12px;color:var(--muted)}
 
-    /* Responsive tweaks */
+
 @media (max-width:880px){
   :root{--card-w:320px;--card-h:520px}
   .intro h1{font-size:28px}
   .card{border-radius:18px}
 
   body{
-    align-items:flex-start; /* از بالا شروع بشه */
-    padding:20px 12px;      /* یکم فاصله داشته باشه */
+    align-items:flex-start; 
+    padding:20px 12px;     
   }
 }
 
-
-    /* Tiny animation */
     .shine{position:absolute;inset:0;pointer-events:none;background:linear-gradient(120deg,rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.00) 35%, rgba(255,255,255,0.03) 60%, rgba(255,255,255,0.00)100%);mix-blend-mode:overlay}
 
   </style>
@@ -95,7 +93,7 @@
               <div class="logo">d</div>
               <div class="title">
                 <div class="name">dipico</div>
-                <div class="role">Mechatronics student <br> Embedded systems</div>
+                <div class="role">Mechatronics student <br> Embedded systems designer</div>
               </div>
             </div>
 
@@ -126,7 +124,6 @@
               </a>
             </div>
           
-            <!-- Phone number (on next line) -->
             <div style="margin-top:10px">
               <a class="icon-btn" href="tel:09056025848">
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden>
@@ -146,9 +143,9 @@
   </div>
 
   <script>
-    // 3D tilt interaction
+
     const card = document.getElementById('card');
-    const bounds = 20; // max degrees
+    const bounds = 20; 
 
     function handleMove(e){
       const rect = card.getBoundingClientRect();
@@ -167,7 +164,7 @@
 
 
 
-    // Accessibility: allow keyboard focus to icons
+  
     document.querySelectorAll('.icon-btn').forEach(el=>{ el.setAttribute('tabindex','0'); });
 
   </script>
